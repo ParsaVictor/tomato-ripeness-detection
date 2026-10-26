@@ -1,0 +1,8 @@
+# ByteTrack settings for tomatoes on a conveyor (Ultralytics tracker config)
+tracker_type: bytetrack
+track_high_thresh: 0.25 # first-stage matches: same as the detection threshold of the photo tool
+track_low_thresh: 0.1   # second stage re-attaches weak (blurred / far) detections to existing tracks
+new_track_thresh: 0.3   # a new tomato needs a reasonably confident box
+track_buffer: 15        # keep a lost track ~0.5-1 s, so a tomato missed for a few frames keeps its ID
+match_thresh: 0.8
+fuse_score: True

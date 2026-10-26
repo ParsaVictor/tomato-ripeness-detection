@@ -1,0 +1,5 @@
+{
+ "global": 0.334,
+ "per_class": {"tomato": 0.334},
+ "how": "confidence at the F1 maximum on val"
+}

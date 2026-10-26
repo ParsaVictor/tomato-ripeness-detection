@@ -1,0 +1,46 @@
+# Phase 5 - class-agnostic tomato-vs-background evaluation config.
+# Every key below mirrors DEFAULT_CONFIG in phase5/common.py. Relative paths resolve against THIS file's folder.
+
+model: runs/detect/train/weights/best.pt   # trained Ultralytics weights to evaluate
+imgsz: 640            # network input size (also used for the "network-input pixels" size buckets)
+device: ""            # "" = auto (CPU here), "0" = first GPU, "cpu"
+batch: 16
+half: false
+pred_conf: 0.001      # low conf used to build the PR curve / mAP (like `yolo val`)
+op_conf: 0.25         # operating point for Precision / Recall / F1 and the failure analysis
+nms_iou: 0.7          # NMS IoU threshold
+agnostic_nms: true    # class-agnostic NMS for the class-agnostic metrics (4-class metrics always use per-class NMS)
+max_det: 300          # max detections per image
+iou_match: 0.5        # IoU for TP matching in the failure analysis
+recall_gate: 0.85     # conveyor_holdout recall@op_conf below this => FAIL + failure examples
+seed: 0               # seed for the holdout split (make_holdouts)
+out_dir: reports/phase5            # report, JSON, CSV, failure examples
+splits_dir: splits                 # manifest.json + <key>_holdout.txt / <key>_train.txt
+cache_dir: reports/phase5/pred_cache
+near_dup_hamming: 6   # dHash Hamming distance <= this => near-duplicate (grouped / leakage)
+
+failure:
+  max_examples: 8     # example images per failure tag
+  blur_rel: 0.5       # motion_blur: Laplacian variance < blur_rel * median of detected tomatoes
+  contrast_de: 12.0   # belt_background: CIELAB deltaE between tomato and surrounding ring < this
+  occl_ioa: 0.2       # occlusion: intersection-over-area with another tomato >= this
+  border_px: 2        # occlusion (truncated): box within this many px of the image edge
+  bg_iou: 0.1         # FP with max IoU < bg_iou => background (belt) false positive
+
+datasets:
+  defects:            # (a) Tomato Defects, evaluated on its test split
+    root: datasets/tomato-defects
+    eval_split: test
+    tomato_classes: all          # or a list of class names that count as "tomato"
+  sxsc7:              # (b) tomato-sxsc7, held-out subset
+    root: datasets/tomato-sxsc7
+    tomato_classes: all
+    holdout:
+      use_existing_split: test   # use this split as holdout if it has >= min_images unique images
+      min_images: 30
+      frac: 0.2                  # otherwise carve out max(min_images, frac * n) images group-aware
+  conveyor:           # (c) tomato_count_project (conveyor belt)
+    root: datasets/tomato_count_project
+    tomato_classes: all
+    holdout:
+      n_images: 30               # >= 30 held-out images, never trained on; the rest (~70) go to training

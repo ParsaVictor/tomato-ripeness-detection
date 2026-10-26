@@ -1,0 +1,43 @@
+{
+ "train": {
+  "rotten": 4820,
+  "sound_defects": 7500,
+  "sound_conveyor_sxsc7": 3353
+ },
+ "domain_images": {
+  "conveyor": 115,
+  "sxsc7": 207
+ },
+ "thresholds": {
+  "0.3": {
+   "defects_val_rotten_recall": 0.975,
+   "defects_val_sound_false_rotten": 0.002916666666666667,
+   "conveyor_val_false_rotten": 0.04776119402985075,
+   "sxsc7_val_false_rotten": 0.001644736842105263
+  },
+  "0.4": {
+   "defects_val_rotten_recall": 0.975,
+   "defects_val_sound_false_rotten": 0.0020833333333333333,
+   "conveyor_val_false_rotten": 0.029850746268656716,
+   "sxsc7_val_false_rotten": 0.001644736842105263
+  },
+  "0.5": {
+   "defects_val_rotten_recall": 0.975,
+   "defects_val_sound_false_rotten": 0.0016666666666666668,
+   "conveyor_val_false_rotten": 0.020895522388059702,
+   "sxsc7_val_false_rotten": 0.0
+  },
+  "0.6": {
+   "defects_val_rotten_recall": 0.975,
+   "defects_val_sound_false_rotten": 0.0008333333333333334,
+   "conveyor_val_false_rotten": 0.011940298507462687,
+   "sxsc7_val_false_rotten": 0.0
+  },
+  "0.7": {
+   "defects_val_rotten_recall": 0.95,
+   "defects_val_sound_false_rotten": 0.0008333333333333334,
+   "conveyor_val_false_rotten": 0.005970149253731343,
+   "sxsc7_val_false_rotten": 0.0
+  }
+ }
+}

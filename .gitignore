@@ -1,0 +1,11 @@
+weights/*
+!weights/README.md
+datasets/
+results/
+runs/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.pytest_cache/
+*.mp4
+.env
