@@ -49,7 +49,7 @@ Labels are standard YOLO txt (`class cx cy w h`, normalised).
 
 ## Download
 
-The dataset is hosted on **Hugging Face** and **Kaggle** (links will be added here once published).
+🤗 **Hugging Face: [ParsaVictor/tomato-ripeness-detection](https://huggingface.co/datasets/ParsaVictor/tomato-ripeness-detection)** — images + YOLO labels, ripeness crops, holdout lists and demo videos.
 
 ## License & attribution
 

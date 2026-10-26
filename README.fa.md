@@ -58,12 +58,12 @@ python tomato_app/run.py 0 --show
 
 ## وزن‌های مدل
 
-وزن‌های آموزش‌دیده **با درخواست** در اختیار قرار می‌گیرند (پژوهش، تست روی خط تولید شما، یا استفاده‌ی تجاری).
-👈 [یک issue باز کنید](https://github.com/ParsaVictor/tomato-ripeness-detection/issues/new?title=Model%20weights%20request) یا از طریق [پروفایل GitHub](https://github.com/ParsaVictor) تماس بگیرید.
+وزن‌های آموزش‌دیده روی 🤗 Hugging Face هستند: [ParsaVictor/tomato-ripeness-yolo26](https://huggingface.co/ParsaVictor/tomato-ripeness-yolo26)
+برای سفارشی‌سازی روی خط تولید، محصول یا دوربین خودتان [تماس بگیرید](https://github.com/ParsaVictor/tomato-ripeness-detection/issues/new?title=Collaboration).
 
 ## دیتاست
 
-**۸٬۴۹۷ عکس و ۷۴٬۴۸۶ کادر گوجه** از ۶ دیتاست عمومی، یکپارچه با یک ساختار برچسب، بدون نشتی بین آموزش و تست، و با حذف عکس‌های تقریباً تکراری. جزئیات: [docs/DATASET.md](docs/DATASET.md)
+**۸٬۴۹۷ عکس و ۷۴٬۴۸۶ کادر گوجه** از ۶ دیتاست عمومی، یکپارچه با یک ساختار برچسب، بدون نشتی بین آموزش و تست، و با حذف عکس‌های تقریباً تکراری. جزئیات: [docs/DATASET.md](docs/DATASET.md) · دانلود از 🤗 [Hugging Face](https://huggingface.co/datasets/ParsaVictor/tomato-ripeness-detection)
 
 ## حمایت
 

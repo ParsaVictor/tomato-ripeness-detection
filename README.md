@@ -10,6 +10,8 @@
 [![Dataset](https://img.shields.io/badge/Dataset-8.5k%20images%20%7C%2074k%20boxes-22c55e)](docs/DATASET.md)
 [![License](https://img.shields.io/badge/Code-AGPL--3.0-blue)](LICENSE)
 [![Data](https://img.shields.io/badge/Data-CC%20BY%204.0-orange)](docs/DATASET.md#license--attribution)
+[![Model on HF](https://img.shields.io/badge/%F0%9F%A4%97%20Model-tomato--ripeness--yolo26-yellow)](https://huggingface.co/ParsaVictor/tomato-ripeness-yolo26)
+[![Dataset on HF](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-tomato--ripeness--detection-yellow)](https://huggingface.co/datasets/ParsaVictor/tomato-ripeness-detection)
 
 [English](README.md) · [فارسی](README.fa.md)
 
@@ -115,7 +117,7 @@ Full details: [docs/RESULTS.md](docs/RESULTS.md).
 git clone https://github.com/ParsaVictor/tomato-ripeness-detection.git
 cd tomato-ripeness-detection
 pip install -r requirements.txt
-# put the model files in weights/  (see "Model weights" below)
+# download the model files into weights/ (see "Model weights" below)
 ```
 
 ```bash
@@ -130,9 +132,14 @@ Every run writes annotated images / an annotated video, `results.csv` / `tracks.
 
 ## 📦 Model weights
 
-The trained weights (detector, ripeness classifier and rotten check) are **available on request** — for research, pilots on your own line, or commercial use.
+The trained weights (detector, ripeness classifier and rotten check) are on **🤗 Hugging Face: [ParsaVictor/tomato-ripeness-yolo26](https://huggingface.co/ParsaVictor/tomato-ripeness-yolo26)**.
 
-👉 **[Open an issue](https://github.com/ParsaVictor/tomato-ripeness-detection/issues/new?title=Model%20weights%20request)** or contact me through my [GitHub profile](https://github.com/ParsaVictor).
+```bash
+pip install huggingface_hub
+hf download ParsaVictor/tomato-ripeness-yolo26 --include "weights/*" --local-dir .   # creates weights/
+```
+
+Need it adapted to your line, crop or camera? **[Get in touch](https://github.com/ParsaVictor/tomato-ripeness-detection/issues/new?title=Collaboration)**.
 
 Expected files: `weights/detector_yolo26s_best.pt`, `weights/ripeness_yolo26s-cls_best.pt`, `weights/rotten_check.npz`.
 Training is fully reproducible with [training/Tomato_Model_Colab.ipynb](training/Tomato_Model_Colab.ipynb) (free Colab T4 GPU).
