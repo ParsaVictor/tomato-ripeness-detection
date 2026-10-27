@@ -165,7 +165,7 @@ Training is fully reproducible with [training/Tomato_Model_Colab.ipynb](training
 
 **8,497 images · 74,486 tomato boxes**, unified from 6 public Roboflow Universe datasets into one consistent schema (`raw / half_ripe / ripe / rotten`, plus `tomato` where ripeness is unknown), with leakage-free holdouts and near-duplicate removal. See **[docs/DATASET.md](docs/DATASET.md)** for sources, splits and statistics.
 
-**Download:** [🤗 Hugging Face](https://huggingface.co/datasets/ParsaVictor/tomato-ripeness-detection) or [GitHub Releases](https://github.com/ParsaVictor/tomato-ripeness-detection/releases/latest) — `tomato_unified_detection.zip` (images + YOLO labels, 403 MB) and `tomato_ripeness_crops.zip` (ripeness crops, 427 MB).
+**Download:** [🤗 Hugging Face](https://huggingface.co/datasets/ParsaVictor/tomato-ripeness-detection) — `tomato_unified_detection.zip` (images + YOLO labels, 403 MB, also on [GitHub Releases](https://github.com/ParsaVictor/tomato-ripeness-detection/releases/latest)) and `tomato_ripeness_crops.zip` (ripeness crops, 427 MB).
 
 ## 🏭 Video / production-line mode
 
