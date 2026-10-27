@@ -58,7 +58,10 @@ python tomato_app/run.py 0 --show
 
 ## وزن‌های مدل
 
-وزن‌های آموزش‌دیده روی 🤗 Hugging Face هستند: [ParsaVictor/tomato-ripeness-yolo26](https://huggingface.co/ParsaVictor/tomato-ripeness-yolo26)
+وزن‌ها روی 🤗 Hugging Face هستند، هم به‌صورت یک مدل کامل و هم جداگانه:
+- 🍅 **مدل کامل (پایپ‌لاین):** [tomato-ripeness-yolo26](https://huggingface.co/ParsaVictor/tomato-ripeness-yolo26)
+- 🔍 **فقط تشخیص گوجه:** [tomato-detector-yolo26s](https://huggingface.co/ParsaVictor/tomato-detector-yolo26s)
+- 🎨 **فقط تعیین رسیدگی:** [tomato-ripeness-classifier-yolo26s](https://huggingface.co/ParsaVictor/tomato-ripeness-classifier-yolo26s)
 برای سفارشی‌سازی روی خط تولید، محصول یا دوربین خودتان [تماس بگیرید](https://github.com/ParsaVictor/tomato-ripeness-detection/issues/new?title=Collaboration).
 
 ## دیتاست

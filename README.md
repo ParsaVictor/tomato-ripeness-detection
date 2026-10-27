@@ -132,7 +132,13 @@ Every run writes annotated images / an annotated video, `results.csv` / `tracks.
 
 ## 📦 Model weights
 
-The trained weights (detector, ripeness classifier and rotten check) are on **🤗 Hugging Face: [ParsaVictor/tomato-ripeness-yolo26](https://huggingface.co/ParsaVictor/tomato-ripeness-yolo26)**.
+All weights are on 🤗 Hugging Face, as one complete pipeline and as separate components:
+
+| | Model | Use it for |
+|---|---|---|
+| 🍅 **Complete** | [tomato-ripeness-yolo26](https://huggingface.co/ParsaVictor/tomato-ripeness-yolo26) | everything in this repo (photo, video, counting) |
+| 🔍 Component | [tomato-detector-yolo26s](https://huggingface.co/ParsaVictor/tomato-detector-yolo26s) | only finding / counting tomatoes |
+| 🎨 Component | [tomato-ripeness-classifier-yolo26s](https://huggingface.co/ParsaVictor/tomato-ripeness-classifier-yolo26s) | only grading a tomato crop (+ rotten check) |
 
 ```bash
 pip install huggingface_hub
