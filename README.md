@@ -130,15 +130,26 @@ python tomato_app/run.py photo.jpg --tiles 2               # extra tiled pass fo
 
 Every run writes annotated images / an annotated video, `results.csv` / `tracks.csv` (one row per tomato) and a JSON summary.
 
+### 🖥️ Web demo (runs locally)
+
+```bash
+pip install -r demo/requirements.txt
+python demo/app.py        # open http://127.0.0.1:7860 — drag in a photo or a short conveyor video
+```
+
+The demo downloads the model on first run if `weights/` is empty, and includes example photos and a conveyor clip.
+
 ## 📦 Model weights
 
-All weights are on 🤗 Hugging Face, as one complete pipeline and as separate components:
+All weights are published as **one complete pipeline** and as **separate components** — see [docs/MODELS.md](docs/MODELS.md) for the family and why it is two-stage.
 
 | | Model | Use it for |
 |---|---|---|
 | 🍅 **Complete** | [tomato-ripeness-yolo26](https://huggingface.co/ParsaVictor/tomato-ripeness-yolo26) | everything in this repo (photo, video, counting) |
 | 🔍 Component | [tomato-detector-yolo26s](https://huggingface.co/ParsaVictor/tomato-detector-yolo26s) | only finding / counting tomatoes |
 | 🎨 Component | [tomato-ripeness-classifier-yolo26s](https://huggingface.co/ParsaVictor/tomato-ripeness-classifier-yolo26s) | only grading a tomato crop (+ rotten check) |
+
+Download either from **[GitHub Releases](https://github.com/ParsaVictor/tomato-ripeness-detection/releases/latest)** (`weights.zip`, unzip in the repo root) or from Hugging Face:
 
 ```bash
 pip install huggingface_hub
@@ -152,7 +163,9 @@ Training is fully reproducible with [training/Tomato_Model_Colab.ipynb](training
 
 ## 🗂️ Dataset
 
-**8,497 images · 74,486 tomato boxes**, unified from 6 public Roboflow Universe datasets into one consistent schema (`raw / half_ripe / ripe / rotten`, plus `tomato` where ripeness is unknown), with leakage-free holdouts and near-duplicate removal. See **[docs/DATASET.md](docs/DATASET.md)** for sources, splits, statistics and download.
+**8,497 images · 74,486 tomato boxes**, unified from 6 public Roboflow Universe datasets into one consistent schema (`raw / half_ripe / ripe / rotten`, plus `tomato` where ripeness is unknown), with leakage-free holdouts and near-duplicate removal. See **[docs/DATASET.md](docs/DATASET.md)** for sources, splits and statistics.
+
+**Download:** [🤗 Hugging Face](https://huggingface.co/datasets/ParsaVictor/tomato-ripeness-detection) or [GitHub Releases](https://github.com/ParsaVictor/tomato-ripeness-detection/releases/latest) — `tomato_unified_detection.zip` (images + YOLO labels, 403 MB) and `tomato_ripeness_crops.zip` (ripeness crops, 427 MB).
 
 ## 🏭 Video / production-line mode
 
@@ -160,6 +173,8 @@ Training is fully reproducible with [training/Tomato_Model_Colab.ipynb](training
 - **Counting line** (`--line x1,y1,x2,y2`) → a tomato is counted when its centre crosses the line; without a line, a track is counted after 3 frames
 - **Ripeness voting** → up to 3 well-framed views per tomato, averaged; no per-frame flicker
 - **Outputs** → annotated MP4, `tracks.csv` (ID, first/last frame, label, confidence), live dashboard
+
+▶️ Full-length demo videos (MP4) are attached to the [latest release](https://github.com/ParsaVictor/tomato-ripeness-detection/releases/latest).
 
 > For deployment, a fixed camera at 25–30 fps over the belt is ideal. Use `--every 2` to halve compute on slower hardware.
 
@@ -177,7 +192,8 @@ tomato_app/
 training/
   Tomato_Model_Colab.ipynb  end-to-end training on Google Colab (data download, holdouts, both models)
   phase5/                   data unification, leakage checks, class-agnostic evaluation
-docs/                    results, dataset card
+demo/                    local web demo (Gradio): photo + video tabs, example inputs
+docs/                    results, model family, dataset card
 assets/                  GIFs and images used here
 ```
 
